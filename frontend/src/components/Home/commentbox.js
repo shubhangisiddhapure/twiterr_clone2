@@ -1,7 +1,7 @@
 /** @format */
 
-import React, { useState } from "react";
-import { Link, useHistory} from "react-router-dom";
+import React from "react";
+import {  useHistory} from "react-router-dom";
 import Comments from "@material-ui/icons/ChatBubbleOutline";
 const Commentbox = (props) => {
   const history = useHistory();

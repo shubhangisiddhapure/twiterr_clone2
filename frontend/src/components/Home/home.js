@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Avatar from "react-avatar";
-import { Card, Button } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 import Like from "../../container/Like";
 import { useLocation } from "react-router-dom";
 import Comment from "./commentbox";

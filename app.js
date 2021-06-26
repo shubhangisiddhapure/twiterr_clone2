@@ -4,7 +4,7 @@ const express = require("express");
 const connectDB = require("./src/config/db.js");
 const bodyParser = require("body-parser");
 const process = require("process");
-const PORT = process.env.PORT;
+
 
 
 const path = require("path");
@@ -41,6 +41,6 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // listen for requests
-app.listen(PORT, () => {
+app.listen(7000, () => {
   console.log("Server is listening on port 7000");
 });
