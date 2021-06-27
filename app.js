@@ -22,6 +22,7 @@ app.use((req, res, next) => {
   next();
 });
 app.use(bodyParser.json());
+
 connectDB();
 const user = require("./src/route/auth.js");
 app.use("/api/user", user);
