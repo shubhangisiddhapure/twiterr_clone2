@@ -17,7 +17,6 @@ const Home = (props) => {
   const token = localStorage.getItem("login");
   var decode1 = jwt.decode(token);
   const useerId = decode1.user.id;
-  const location = useLocation();
   useEffect(async () => {
     const response = await axios.get("http://localhost:7000/api/alltweet", {
       headers: {

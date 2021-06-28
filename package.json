@@ -2,12 +2,13 @@
   "name": "backend",
   "version": "1.0.0",
   "main": "app.js",
-   "engines": {
+  "engines": {
     "node": "10.19.0"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
+    "concurrently": "^6.2.0",
     "config": "^3.3.6",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
@@ -27,8 +28,10 @@
     "eslint-plugin-import": "^2.23.4"
   },
   "scripts": {
-    "start": "nodemon app.js",
+    "start": "nodemon frontend/app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "concurrently \"npm run \" \"npm run frontend\"",
+    "frontend": "npm start --prefix frontend",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix frontend && npm run build --prefix frontend"
   },
   "author": "",

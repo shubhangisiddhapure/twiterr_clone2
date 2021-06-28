@@ -6,13 +6,13 @@ import Navbar from "./Navbars";
 import ShareIcon from "@material-ui/icons/Share";
 import Postcomment from "./postcomment";
 import Comments from "@material-ui/icons/ChatBubbleOutline";
-import { useHistory, useParams, useLocation } from "react-router-dom";
+import {  useParams } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { Card } from "react-bootstrap";
 import { Button } from "@material-ui/core";
 import Avatar from "react-avatar";
 const Comment = (props) => {
-  const history = useHistory();
+ 
   const [text, setText] = useState("");
   const [success, setsuccess] = useState("");
   const [error, seterror] = useState("");

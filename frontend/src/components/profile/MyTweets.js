@@ -1,10 +1,8 @@
 /** @format */
 
 import React, { useState, useEffect } from "react";
-import { Card, Button } from "react-bootstrap";
-import { useLocation, useHistory, useParams } from "react-router-dom";
+import { Card } from "react-bootstrap";
 import axios from "axios";
-import ShareIcon from "@material-ui/icons/Share";
 import Profilecomment from "./profilecomment";
 import Retweet from "../../container/Retweet";
 import Like from "../../container/Like";
@@ -12,7 +10,7 @@ import Avatar from "react-avatar";
 import "../../components/Home/home.css";
 const MyTweets = (props) => {
   const [tweetbox, settweetbox] = useState("");
-  const location = useLocation();
+  // const location = useLocation();
   useEffect(async () => {
     const response = await axios.get("http://localhost:7000/api/myTweet", {
       headers: {

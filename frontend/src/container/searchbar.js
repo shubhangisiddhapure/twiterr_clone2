@@ -1,7 +1,7 @@
 /** @format */
 
 import React, { useState, useEffect } from "react";
-import { Navbar, Nav, Form, FormControl, Button, Card } from "react-bootstrap";
+import { Navbar, Nav, Card } from "react-bootstrap";
 import axios from "axios";
 import Avatar from "react-avatar";
 import { useHistory } from "react-router-dom";
@@ -10,7 +10,7 @@ const NavBar = () => {
   const [users, setUsers] = useState([]);
   const [text, setText] = useState("");
   const [suggestions, setSuggestions] = useState([]);
-  const [userdata, setUserdata] = useState("");
+
   useEffect(() => {
     const loadUsers = async () => {
       const response = await axios.get("http://localhost:7000/api/allusers");
@@ -19,7 +19,7 @@ const NavBar = () => {
     loadUsers();
   }, []);
   const onSuggestHandler = async (text) => {
-    setUserdata(true);
+   
     setText(text);
     setSuggestions([]);
     const data = text;
