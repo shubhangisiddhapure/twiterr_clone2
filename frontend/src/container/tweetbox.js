@@ -37,7 +37,7 @@ function TweetBox() {
           <form>
             <div className="tweetBox__input">
               
-              <Avatar src="https://pbs.twimg.com/profile_images/1266938830608875520/f-eajIjB_400x400.jpg" />
+              <Avatar />
               <input
                 value={text}
                 placeholder="What's happening"
