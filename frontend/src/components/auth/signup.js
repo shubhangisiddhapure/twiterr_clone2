@@ -53,7 +53,7 @@ const Signup = () => {
         setError("please enter valid phone no");
         return false;
       }
-      if (password != confirmpassword) {
+      if (password !== confirmpassword) {
         setError("Password don't match");
         return false
       }
@@ -67,7 +67,7 @@ const Signup = () => {
       console.log(resp.data.token);
       const Token = resp.data.token;
       if (Token) {
-        const token = localStorage.setItem("login", JSON.stringify(resp.token));
+        localStorage.setItem("login", JSON.stringify(resp.token));
         return history.push("/");
       } else {
         setError(true);

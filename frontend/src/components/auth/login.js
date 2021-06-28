@@ -36,7 +36,7 @@ const Login = props => {
       );
       const Token = resp.data.token;
       if (Token) {
-        const token = localStorage.setItem("login", resp.data.token);
+         localStorage.setItem("login", resp.data.token);
         history.push({
           pathname: "/home"
         });
