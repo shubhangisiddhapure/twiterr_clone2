@@ -5,9 +5,7 @@ const connectDB = require("./src/config/db.js");
 const bodyParser = require("body-parser");
 const process = require("process");
 
-
-
-const path = require("path");
+// const path = require("path");
 app = express();
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -32,14 +30,14 @@ const comment = require("./src/route/user.js");
 app.use("/api", comment);
 
 
-if (process.env.NODE_ENV === "production") {
-  // Set static folder
-  app.use(express.static("frontend/build"));
+// if (process.env.NODE_ENV === "production") {
+//   // Set static folder
+//   app.use(express.static("frontend/build"));
 
-  app.get("*", (req, res) => {
-    res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
-  });
-}
+//   app.get("*", (req, res) => {
+//     res.sendFile(path.resolve(__dirname, "frontend", "build", "index.html"));
+//   });
+// }
 
 // listen for requests
 app.listen(process.env.PORT || 7000, () => {
