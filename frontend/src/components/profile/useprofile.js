@@ -23,7 +23,7 @@ const Userprofile = (props) => {
   const token = localStorage.getItem("login");
   var decode1 = jwt.decode(token);
   const loggeduserId = decode1.user.id;
- 
+
   useEffect(async () => {
     const response = await axios.post(
       "https://twitter-clone-shubhangi.herokuapp.com/api/userprofile",
@@ -47,12 +47,12 @@ const Userprofile = (props) => {
     setId(response.data.data._id);
 
     const id = response.data.data._id;
-    console.log(id);
+
     const profiletweet = await axios.post(
       "https://twitter-clone-shubhangi.herokuapp.com/api/usertweet",
       { id }
     );
-    console.log(profiletweet.data.tweets);
+
     setAlltweets(profiletweet.data.data.alltweets);
   }, [location]);
 
@@ -68,8 +68,6 @@ const Userprofile = (props) => {
       }
     );
 
-    console.log(resp.data.user.followersCount);
-
     setFollower(false);
     setCount(count + 1);
   };
@@ -84,8 +82,6 @@ const Userprofile = (props) => {
         },
       }
     );
-
-    console.log(resp.data.user.followersCount);
 
     setCount(count - 1);
 
@@ -169,7 +165,7 @@ const Userprofile = (props) => {
       <div>
         {alltweets &&
           alltweets.map((tweet, index) => {
-            console.log(tweet);
+            // console.log(tweet);
             const userid = localStorage.getItem("id");
             const createdAt = new Date(tweet.createdAt).toLocaleDateString(
               "en-GB",

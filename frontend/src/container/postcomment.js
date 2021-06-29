@@ -1,8 +1,8 @@
 /** @format */
 
 import React, { useState, useEffect } from "react";
-import { Card,  } from "react-bootstrap";
-import {  useParams } from "react-router-dom";
+import { Card } from "react-bootstrap";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 import ShareIcon from "@material-ui/icons/Share";
 import LikeButton from "@material-ui/icons/FavoriteTwoTone";
@@ -13,9 +13,8 @@ import "../components/Home/home.css";
 const Postcomment = (props) => {
   const [commentbox, setcommentbox] = useState("");
   let { id } = useParams();
- 
+
   useEffect(async () => {
-    console.log(id);
     const response = await axios.post(
       "https://twitter-clone-shubhangi.herokuapp.com/api/comment",
       {
@@ -25,10 +24,8 @@ const Postcomment = (props) => {
     if (response) {
       setcommentbox(response.data.data);
       // console.log(response.data);
-      console.log(commentbox);
     }
   }, []);
-
 
   return (
     <div>

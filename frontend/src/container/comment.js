@@ -6,26 +6,24 @@ import Navbar from "./Navbars";
 import ShareIcon from "@material-ui/icons/Share";
 import Postcomment from "./postcomment";
 import Comments from "@material-ui/icons/ChatBubbleOutline";
-import {  useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { Card } from "react-bootstrap";
 import { Button } from "@material-ui/core";
 import Avatar from "react-avatar";
 const Comment = (props) => {
- 
   const [text, setText] = useState("");
   const [success, setsuccess] = useState("");
   const [error, seterror] = useState("");
   const [tweet, settweet] = useState("");
   let { id } = useParams();
 
-
   useEffect(async () => {
     const response = await axios.post(
       "https://twitter-clone-shubhangi.herokuapp.com/api/selected/tweet",
       { id }
     );
-    console.log(response.data.data);
+
     settweet(response.data.data);
   }, []);
 
@@ -41,7 +39,7 @@ const Comment = (props) => {
           },
         }
       );
-      console.log(resp);
+
       if (resp) {
         setsuccess("Comment added successfully");
       }
@@ -121,7 +119,7 @@ const Comment = (props) => {
                 name="T"
                 size="50"
                 round={true}
-                colors={["blue","red"]}
+                colors={["blue", "red"]}
               />
               {/* <img url="https://pbs.twimg.com/profile_images/1266938830608875520/f-eajIjB_400x400.jpg" /> */}
               <input

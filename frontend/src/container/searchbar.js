@@ -21,11 +21,10 @@ const NavBar = () => {
     loadUsers();
   }, []);
   const onSuggestHandler = async (text) => {
-   
     setText(text);
     setSuggestions([]);
     const data = text;
-    console.log(data);
+
     history.push({
       pathname: "/userprofile",
       state: { detail: data },
@@ -51,7 +50,7 @@ const NavBar = () => {
         return user.username.match(regex);
       });
     }
-    console.log(matches);
+
     setSuggestions(matches);
     setText(text);
   };

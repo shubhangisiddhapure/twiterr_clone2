@@ -6,25 +6,25 @@ import LikeButton from "@material-ui/icons/FavoriteTwoTone";
 var jwt = require("jsonwebtoken");
 const Like = (props) => {
   const like = props.data.likesCount;
-  const token = localStorage.getItem("login")
+  const token = localStorage.getItem("login");
   var decode1 = jwt.decode(token);
-  const loggeduserId=decode1.user.id;
+  const loggeduserId = decode1.user.id;
   const id = props.data._id;
   const [sucess, setsuccess] = useState();
   const [likesState, setLikes] = useState(like);
-   useEffect(async () => {
-     const response = await axios.post(
-       "https://twitter-clone-shubhangi.herokuapp.com/api/selected/tweet",
-       { id }
-     );
-     const likeduserid = response.data.data.likes;
-       const lengthlist = likeduserid.filter((id) => id === loggeduserId);
-       if (lengthlist.length === 0) {
-         setsuccess(false);
-       } else {
-         setsuccess(true);
-       }
-   }, []);
+  useEffect(async () => {
+    const response = await axios.post(
+      "https://twitter-clone-shubhangi.herokuapp.com/api/selected/tweet",
+      { id }
+    );
+    const likeduserid = response.data.data.likes;
+    const lengthlist = likeduserid.filter((id) => id === loggeduserId);
+    if (lengthlist.length === 0) {
+      setsuccess(false);
+    } else {
+      setsuccess(true);
+    }
+  }, []);
   // console.log(tweet)
   const toggleLike = async () => {
     if (!sucess) {
@@ -58,10 +58,7 @@ const Like = (props) => {
   return (
     <div>
       {sucess ? (
-        <LikeButton
-          style={{ color: "red" }}
-          onClick={(e) => toggleLike()}
-        />
+        <LikeButton style={{ color: "red" }} onClick={(e) => toggleLike()} />
       ) : (
         <LikeButton onClick={(e) => toggleLike()}> </LikeButton>
       )}

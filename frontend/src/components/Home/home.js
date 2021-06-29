@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import Avatar from "react-avatar";
 import { Card } from "react-bootstrap";
 import Like from "../../container/Like";
-import { useLocation } from "react-router-dom";
+
 import Comment from "./commentbox";
 import Retweet from "../../container/Retweet";
 import axios from "axios";
@@ -28,7 +28,7 @@ const Home = (props) => {
     );
     settweets(response.data.data.alltweets);
   }, []);
-  console.log(tweets);
+  // console.log(tweets);
   return (
     <div>
       <NavBar></NavBar>
@@ -37,7 +37,7 @@ const Home = (props) => {
         <Tweetbox />
         {tweets &&
           tweets.map((tweet, index) => {
-            //  console.log(tweet);
+           
             const createdAt = new Date(tweet.createdAt).toLocaleDateString(
               "en-GB",
               {

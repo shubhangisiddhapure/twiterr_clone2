@@ -18,9 +18,9 @@ const Profile = () => {
       }
     );
     setProfile(response.data.data);
-     console.log(response.data.data);
+    
   }, []);
-  console.log(profiles);
+  // console.log(profiles);
   return (
     <div>
       <Navbar>

@@ -51,10 +51,9 @@ function Retweet(props) {
         },
       }
     );
-    console.log(response);
+
     setRetweet(true);
     setCount(count - 1);
-    console.log(count);
   };
   return (
     <div>

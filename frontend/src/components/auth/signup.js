@@ -64,7 +64,7 @@ const Signup = () => {
         "https://twitter-clone-shubhangi.herokuapp.com/api/user/create",
         data
       );
-      console.log(resp.data.token);
+ 
       const Token = resp.data.token;
       if (Token) {
         localStorage.setItem("login", JSON.stringify(resp.token));

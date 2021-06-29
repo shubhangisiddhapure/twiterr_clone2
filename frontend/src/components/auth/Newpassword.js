@@ -18,7 +18,7 @@ const Newpassword = () => {
         return false;
       }
       if (password.length < 5) {
-        console.log("sidd");
+      
         setError("Password length should be at least 5 letters");
         return false;
       }
@@ -26,8 +26,6 @@ const Newpassword = () => {
         setError("Invalid password");
         return false;
       }
-      console.log(password);
-      console.log(confrimPassword);
       const resp = await axios.post(
         "https://twitter-clone-shubhangi.herokuapp.com/api/user/newPassword",
         { password, token }
