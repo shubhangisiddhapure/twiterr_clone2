@@ -18,11 +18,14 @@ const Home = (props) => {
   var decode1 = jwt.decode(token);
   const useerId = decode1.user.id;
   useEffect(async () => {
-    const response = await axios.get("http://localhost:7000/api/alltweet", {
-      headers: {
-        "x-auth-token": localStorage.getItem("login"),
-      },
-    });
+    const response = await axios.get(
+      "https://twitter-clone-shubhangi.herokuapp.com/api/alltweet",
+      {
+        headers: {
+          "x-auth-token": localStorage.getItem("login"),
+        },
+      }
+    );
     settweets(response.data.data.alltweets);
   }, []);
   console.log(tweets);

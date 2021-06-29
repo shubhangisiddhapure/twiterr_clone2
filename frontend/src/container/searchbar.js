@@ -13,7 +13,9 @@ const NavBar = () => {
 
   useEffect(() => {
     const loadUsers = async () => {
-      const response = await axios.get("http://localhost:7000/api/allusers");
+      const response = await axios.get(
+        "https://twitter-clone-shubhangi.herokuapp.com/api/allusers"
+      );
       setUsers(response.data.data);
     };
     loadUsers();

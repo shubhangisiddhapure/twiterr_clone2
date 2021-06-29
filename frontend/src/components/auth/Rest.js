@@ -20,7 +20,7 @@ const Reset = () => {
         return false;
       }
       const resp = await axios.post(
-        "http://localhost:7000/api/user/resetPassword",
+        "https://twitter-clone-shubhangi.herokuapp.com/api/user/resetPassword",
         { email }
       );
       let data = resp.data;

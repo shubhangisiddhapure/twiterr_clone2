@@ -29,7 +29,7 @@ const Newpassword = () => {
       console.log(password);
       console.log(confrimPassword);
       const resp = await axios.post(
-        "http://localhost:7000/api/user/newPassword",
+        "https://twitter-clone-shubhangi.herokuapp.com/api/user/newPassword",
         { password, token }
       );
       let data = resp.data;

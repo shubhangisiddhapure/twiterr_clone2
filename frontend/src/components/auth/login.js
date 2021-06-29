@@ -31,7 +31,7 @@ const Login = props => {
       
       const data = { email, password };
       const resp = await axios.post(
-        "http://localhost:7000/api/user/login",
+        "https://twitter-clone-shubhangi.herokuapp.com/api/user/login",
         data
       );
       const Token = resp.data.token;

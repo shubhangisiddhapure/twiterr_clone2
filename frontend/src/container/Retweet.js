@@ -13,11 +13,14 @@ function Retweet(props) {
   const id = props.data._id;
   const result = props.data.retweets.filter((id) => id === loggeduserId);
   useEffect(async () => {
-    const response = await axios.get("http://localhost:7000/api/alltweet", {
-      headers: {
-        "x-auth-token": localStorage.getItem("login"),
-      },
-    });
+    const response = await axios.get(
+      "https://twitter-clone-shubhangi.herokuapp.com/api/alltweet",
+      {
+        headers: {
+          "x-auth-token": localStorage.getItem("login"),
+        },
+      }
+    );
     if (result.length === 0) {
       setRetweet(true);
     } else {
@@ -27,7 +30,7 @@ function Retweet(props) {
   }, []);
   const Follow = async (e) => {
     const response = await axios.put(
-      "http://localhost:7000/api/reTweet",
+      "https://twitter-clone-shubhangi.herokuapp.com/api/reTweet",
       { id },
       {
         headers: {
@@ -40,7 +43,7 @@ function Retweet(props) {
   };
   const Unfollow = async (e) => {
     const response = await axios.put(
-      "http://localhost:7000/api/undoRetweet",
+      "https://twitter-clone-shubhangi.herokuapp.com/api/undoRetweet",
       { id },
       {
         headers: {

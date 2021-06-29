@@ -16,9 +16,12 @@ const Postcomment = (props) => {
  
   useEffect(async () => {
     console.log(id);
-    const response = await axios.post("http://localhost:7000/api/comment", {
-      id,
-    });
+    const response = await axios.post(
+      "https://twitter-clone-shubhangi.herokuapp.com/api/comment",
+      {
+        id,
+      }
+    );
     if (response) {
       setcommentbox(response.data.data);
       // console.log(response.data);

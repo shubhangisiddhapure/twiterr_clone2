@@ -14,7 +14,7 @@ const Like = (props) => {
   const [likesState, setLikes] = useState(like);
    useEffect(async () => {
      const response = await axios.post(
-       "http://localhost:7000/api/selected/tweet",
+       "https://twitter-clone-shubhangi.herokuapp.com/api/selected/tweet",
        { id }
      );
      const likeduserid = response.data.data.likes;
@@ -29,7 +29,7 @@ const Like = (props) => {
   const toggleLike = async () => {
     if (!sucess) {
       const resp = await axios.put(
-        "http://localhost:7000/api/tweet/toggleLike",
+        "https://twitter-clone-shubhangi.herokuapp.com/api/tweet/toggleLike",
         { id },
         {
           headers: {
@@ -41,7 +41,7 @@ const Like = (props) => {
       setsuccess(true);
     } else {
       const resp = await axios.put(
-        "http://localhost:7000/api/tweet/toggleLike",
+        "https://twitter-clone-shubhangi.herokuapp.com/api/tweet/toggleLike",
         { id },
         {
           headers: {

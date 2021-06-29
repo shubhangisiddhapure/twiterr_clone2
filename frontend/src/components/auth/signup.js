@@ -61,7 +61,7 @@ const Signup = () => {
       const data = { email,gender,bio,phoneNo,password,confirmpassword ,fullname,username};
       console.log(data);
       const resp = await axios.post(
-        "http://localhost:7000/api/user/create",
+        "https://twitter-clone-shubhangi.herokuapp.com/api/user/create",
         data
       );
       console.log(resp.data.token);

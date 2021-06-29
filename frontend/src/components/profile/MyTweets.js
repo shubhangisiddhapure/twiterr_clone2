@@ -12,11 +12,14 @@ const MyTweets = (props) => {
   const [tweetbox, settweetbox] = useState("");
   // const location = useLocation();
   useEffect(async () => {
-    const response = await axios.get("http://localhost:7000/api/myTweet", {
-      headers: {
-        "x-auth-token": localStorage.getItem("login"),
-      },
-    });
+    const response = await axios.get(
+      "https://twitter-clone-shubhangi.herokuapp.com/api/myTweet",
+      {
+        headers: {
+          "x-auth-token": localStorage.getItem("login"),
+        },
+      }
+    );
     if (response) {
       settweetbox(response.data.data);
 

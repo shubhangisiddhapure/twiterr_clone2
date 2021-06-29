@@ -21,14 +21,16 @@ const Userprofile = (props) => {
   const [count, setCount] = useState("");
   const location = useLocation();
   const token = localStorage.getItem("login");
-  // console.log(token)
   var decode1 = jwt.decode(token);
   const loggeduserId = decode1.user.id;
-  // console.log(loggeduserId)
+ 
   useEffect(async () => {
-    const response = await axios.post("http://localhost:7000/api/userprofile", {
-      username: location.state.detail,
-    });
+    const response = await axios.post(
+      "https://twitter-clone-shubhangi.herokuapp.com/api/userprofile",
+      {
+        username: location.state.detail,
+      }
+    );
     setProfile(response.data.data);
     setCount(response.data.data.followersCount);
     if (loggeduserId === response.data.data._id) {
@@ -47,7 +49,7 @@ const Userprofile = (props) => {
     const id = response.data.data._id;
     console.log(id);
     const profiletweet = await axios.post(
-      "http://localhost:7000/api/usertweet",
+      "https://twitter-clone-shubhangi.herokuapp.com/api/usertweet",
       { id }
     );
     console.log(profiletweet.data.tweets);
@@ -57,7 +59,7 @@ const Userprofile = (props) => {
   const Follow = async (e) => {
     const profileid = profile._id;
     const resp = await axios.post(
-      "http://localhost:7000/api/follow",
+      "https://twitter-clone-shubhangi.herokuapp.com/api/follow",
       { userid: profileid },
       {
         headers: {
@@ -74,7 +76,7 @@ const Userprofile = (props) => {
   const UnFollow = async (e) => {
     const profileid = profile._id;
     const resp = await axios.post(
-      "http://localhost:7000/api/unfollow",
+      "https://twitter-clone-shubhangi.herokuapp.com/api/unfollow",
       { userid: profileid },
       {
         headers: {

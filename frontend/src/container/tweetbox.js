@@ -13,7 +13,7 @@ function TweetBox() {
   const sendTweet = async () => {
     try {
       const resp = await axios.post(
-        "http://localhost:7000/api/tweet",
+        "https://twitter-clone-shubhangi.herokuapp.com/api/tweet",
         { text },
         {
           headers: {

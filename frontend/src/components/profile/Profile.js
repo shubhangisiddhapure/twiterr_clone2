@@ -9,11 +9,14 @@ import MyTweets from "./MyTweets";
 const Profile = () => {
   const [profiles, setProfile] = useState();
   useEffect(async () => {
-    const response = await axios.get("http://localhost:7000/api/myProfile", {
-      headers: {
-        "x-auth-token": localStorage.getItem("login"),
-      },
-    });
+    const response = await axios.get(
+      "https://twitter-clone-shubhangi.herokuapp.com/api/myProfile",
+      {
+        headers: {
+          "x-auth-token": localStorage.getItem("login"),
+        },
+      }
+    );
     setProfile(response.data.data);
      console.log(response.data.data);
   }, []);

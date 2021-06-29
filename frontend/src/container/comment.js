@@ -22,7 +22,7 @@ const Comment = (props) => {
 
   useEffect(async () => {
     const response = await axios.post(
-      "http://localhost:7000/api/selected/tweet",
+      "https://twitter-clone-shubhangi.herokuapp.com/api/selected/tweet",
       { id }
     );
     console.log(response.data.data);
@@ -33,7 +33,7 @@ const Comment = (props) => {
     try {
       seterror(false);
       const resp = await axios.put(
-        "http://localhost:7000/api/tweet/replaytweet",
+        "https://twitter-clone-shubhangi.herokuapp.com/api/tweet/replaytweet",
         { id, text },
         {
           headers: {
