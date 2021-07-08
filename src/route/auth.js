@@ -37,11 +37,13 @@ router.post(
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-    const { email, fullname, username, password, avatar, bio } = req.body;
+    const { email, fullname, username, password, avatar, bio, gender } =
+      req.body;
     // Build profile object
     const profileFields = {};
     if (bio) profileFields.bio = bio;
     if (email) profileFields.email = email;
+     if (gender) profileFields.gender = gender;
     if (fullname) profileFields.fullname = fullname;
     if (username) profileFields.username = username;
     if (password) profileFields.password = password;
@@ -69,7 +71,7 @@ router.post(
       };
       jwt.sign(payload, jwtToken, { expiresIn: 360000 }, (err, token) => {
         if (err) throw err;
-        res.json({ token });
+        res.status(200).json({ success: true, data: token });
       });
     } catch (err) {
       console.error(err);
