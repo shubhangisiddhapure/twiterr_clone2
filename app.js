@@ -40,7 +40,9 @@ if (process.env.NODE_ENV === "production") {
 }
 
 // listen for requests
-app.listen(process.env.PORT || 7000, () => {
-  //  console.log("Server is listening on port 7000");
-});
+if (!module.parent) {
+  app.listen(process.env.PORT || 7000, () => {
+    console.log("Server is listening on port 7000");
+  });
+}
 module.exports=app

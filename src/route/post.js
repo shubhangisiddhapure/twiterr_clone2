@@ -79,7 +79,6 @@ router.put("/tweet/toggleLike", auth, async (req, res) => {
     if (!tweet) {
       return res.status(404).json({ msg: "Tweet Not found" });
     }
-
     if (tweet.likes.includes(req.user.id)) {
       const index = tweet.likes.indexOf(req.user.id);
       tweet.likes.splice(index);
@@ -96,7 +95,7 @@ router.put("/tweet/toggleLike", auth, async (req, res) => {
   }
 });
 
-//replay to tweet or comment on tweet
+//comment on tweet
 router.put(
   "/tweet/replaytweet",
   [auth, [check("text", "Text is required").not().isEmpty()]],
