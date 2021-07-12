@@ -6,20 +6,21 @@ const request = require("supertest");
 const app = require("../../app");
 const db = require("../test/db");
 
+beforeAll(async () => await db.connect());
+afterAll(async () => await db.clear());
+afterAll(async () => await db.close());
+jest.setTimeout(15000);
+
 it("it should log-in a  user", async () => {
-    let req = {
-        email: "pooja@gmail.com",
-        password: "shubhangi",
-    };
-    const res = await request(app).post("/api/user/login").send(req);
-    console.log(res.body);
-    token = res.body.token;
-    expect(res.status).toBe(200);
-})
-  beforeAll(async () => await db.connect());
-  afterAll(async () => await db.clear());
-  afterAll(async () => await db.close());
-  jest.setTimeout(15000);
+  let req = {
+    email: "pooja@gmail.com",
+    password: "shubhangi",
+  };
+  const res = await request(app).post("/api/user/login").send(req);
+  console.log(res.body);
+  token = res.body.token;
+  expect(res.status).toBe(200);
+});
 
 //   // it("it should log-in a  user", async () => {
 
@@ -81,8 +82,7 @@ it("it should log-in a  user", async () => {
 // });
 // //testing for add a comment
 // it("it should a added a comment on post", async () => {
- 
- 
+
 //   const response = await request(app)
 //     .put("/api/tweet/replaytweet")
 //     .set({ "x-auth-token": token })
@@ -91,8 +91,7 @@ it("it should log-in a  user", async () => {
 // });
 // //testing for add a comment with incorrect tweet id
 // it("it should a added a comment on post", async () => {
-  
- 
+
 //   const response = await request(app)
 //     .put("/api/tweet/replaytweet")
 //     .set({ "x-auth-token": token })
