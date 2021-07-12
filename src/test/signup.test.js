@@ -1,72 +1,63 @@
 /** @format */
-const { MongoClient } = require("mongodb");
+
 const request = require("supertest");
 const app = require("../../app");
+const db = require("../test/db");
+const User = require("../model/user");
 
-describe("testing", () => {
-  let connection;
-  let db;
+beforeAll(async () => await db.connect());
+afterAll(async () => await db.clear());
+afterAll(async () => await db.close());
 
-  beforeAll(async () => {
-    console.log(global.__MONGO_URI__);
-    connection = await MongoClient.connect(global.__MONGO_URI__, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
-    db = await connection.db();
-  });
+jest.setTimeout(15000);
 
-  afterAll(async () => {
-    await connection.close();
-  });
+describe("Test suite for user signup", () => {
   it("it should create a new user and login", async () => {
-    jest.setTimeout(5000);
-    const users = db.collection("users");
     let req = {
-      email: "getu@gmail.com",
-      gender: "M",
-      fullname: "shubham",
-      username: "getu",
+      email: "pooja@gmail.com",
+      gender: "F",
+      fullname: "pooja",
+      username: "pooja",
       password: "shubhangi",
       bio: "Nature Lover",
     };
     const res = await request(app).post("/api/user/create").send(req);
-    console.log(res.status);
     expect(res.status).toBe(200);
     const response = await request(app).post("/api/user/login").send({
-      email: "getu@gmail.com",
+      email: "pooja@gmail.com",
       password: "shubhangi",
     });
-    token = response.body.token;
+    console.log(response.body.token);
     expect(response.status).toBe(200);
   });
+});
   //test for wrong user name
   it("it should create a new user", async () => {
-    jest.setTimeout(5000);
-    const users = db.collection("users");
     let req = {
       email: "dhanshri@gmail.com",
       gender: "M",
       fullname: "dhanshri",
-      username: "dhanshri",
+      username: "pooja",
       password: "shubhangi",
       bio: "Nature Lover",
     };
     const res = await request(app).post("/api/user/create").send(req);
-    expect(res.status).toBe(200);
+    expect(res.status).toBe(500);
   });
+
   //test for wrong password
   it("it should login a user", async () => {
-    jest.setTimeout(5000);
-    const users = db.collection("users");
     const response = await request(app).post("/api/user/login").send({
-      email: "maroti22@gmail.com",
-      password: "shubhangi33",
+      email: "pooja@gmail.com",
+      password: "shubhangi22",
     });
-    token = response.body.token;
-    expect(response.status).toBe(200);
-  });
-  beforeEach(async () => {
-    await db.collection("users").deleteMany({});
-  });
-});
+    const token = response.body.token
+    expect(response.status).toBe(400);
+    const res = await request(app)
+      .post("/api/tweet")
+      .set({ "x-auth-token": token })
+      .send({
+        text: "When I asked god for peace, he showed me how to help others.",
+      });
+    expect(res.status).toBe(200);
+  })

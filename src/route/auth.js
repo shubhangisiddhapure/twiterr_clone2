@@ -39,6 +39,7 @@ router.post(
     }
     const { email, fullname, username, password, avatar, bio, gender } =
       req.body;
+    console.log(req.body.email)
     // Build profile object
     const profileFields = {};
     if (bio) profileFields.bio = bio;
@@ -49,7 +50,7 @@ router.post(
     if (password) profileFields.password = password;
     if (avatar) profileFields.avatar = avatar;
 
-    console.log(profileFields.email);
+    // console.log(profileFields.email);
     // Build social object
     try {
       let profile = await User.findOne({ email });
@@ -95,15 +96,16 @@ router.post(
     const { email, password } = req.body;
     try {
       //see user exite
+      console.log(req.body);
       let user = await User.findOne({ email });
       if (!user) {
+        console.log("ssss")
         return res
           .status(400)
           .json({ errors: [{ msg: "invalid credentials" }] });
       }
 
       const isMatch = await bcrypt.compare(password, user.password);
-
       if (!isMatch) {
         return res
           .status(400)
