@@ -5,8 +5,9 @@
 const request = require("supertest");
 const app = require("../../app");
 const db = require("../test/db");
-
-it("it should create a new user and login", async () => {
+let token = undefined;
+beforeAll(async () => {
+  await db.connect();
   let req = {
     email: "pooja@gmail.com",
     gender: "F",
@@ -16,18 +17,15 @@ it("it should create a new user and login", async () => {
     bio: "Nature Lover",
   };
   const res = await request(app).post("/api/user/create").send(req);
-  expect(res.status).toBe(200);
-});
-it("it should log-in a  user", async () => {
-  let req = {
+  let reqs = {
     email: "pooja@gmail.com",
     password: "shubhangi",
   };
-  const res = await request(app).post("/api/user/login").send(req);
-  token = res.body.token;
-  expect(res.status).toBe(200);
+  const response = await request(app)
+    .post("/api/user/login")
+    .send({ email: reqs.email, password: reqs.password });
+  token = response.body.token;
 });
-
 it("it should log-in a  user", async () => {
   const response = await request(app)
     .post("/api/tweet")
