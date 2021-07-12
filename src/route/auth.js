@@ -39,7 +39,6 @@ router.post(
     }
     const { email, fullname, username, password, avatar, bio, gender } =
       req.body;
-    console.log(req.body.email)
     // Build profile object
     const profileFields = {};
     if (bio) profileFields.bio = bio;
@@ -96,7 +95,7 @@ router.post(
     const { email, password } = req.body;
     try {
       //see user exite
-      console.log(req.body);
+      
       let user = await User.findOne({ email });
       if (!user) {
         console.log("ssss")

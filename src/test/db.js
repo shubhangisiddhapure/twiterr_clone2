@@ -14,9 +14,7 @@ const opts = {
 
 // Provide connection to a new in-memory database server.
 const connect = async () => {
-  // NOTE: before establishing a new connection close previous
   await mongoose.disconnect();
-
   const mongoUri = await mongoServer.getUri();
   await mongoose.connect(mongoUri, opts, (err) => {
     if (err) {
@@ -34,7 +32,6 @@ const close = async () => {
 // Remove all data from collections
 const clear = async () => {
   const collections = mongoose.connection.collections;
-
   for (const key in collections) {
     await collections[key].deleteMany();
   }
