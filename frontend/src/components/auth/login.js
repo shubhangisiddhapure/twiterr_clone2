@@ -24,8 +24,8 @@ const Login = props => {
         setError("Please enter a valid email id");
         return false;
       }
-      if (password.length < 5) {
-        setError("password must be atleast 6 character long");
+      if (password.length < 8) {      
+        setError("password must be atleast 8character long");
         return false;
       }
       
@@ -51,7 +51,7 @@ const Login = props => {
     <div className="login">
       <Card
         className="container"
-        style={{ width: "30%", padding: "3%", marginBottom: "10%" }}
+        style={{ width: "30%", padding: "3%", marginBottom: "15%" }}
       >
         <Form>
           <Form.Group controlId="formBasicEmail">
