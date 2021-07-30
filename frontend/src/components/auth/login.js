@@ -51,7 +51,7 @@ const Login = props => {
     <div className="login">
       <Card
         className="container"
-        style={{ width: "30%", padding: "3%", marginBottom: "15%" }}
+        style={{ width: "30%", padding: "3%", marginBottom: "10%" }}
       >
         <Form>
           <Form.Group controlId="formBasicEmail">
